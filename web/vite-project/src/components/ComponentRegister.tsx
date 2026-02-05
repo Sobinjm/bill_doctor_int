@@ -2,7 +2,7 @@
 import React from 'react';
 import type { SDUIComponent } from '../types';
 
-//title card component
+
 const Banner = ({ message, variant = 'info' }: { message: string, variant?: string }) => (
     <div className={`banner banner-${variant}`}>
         {message}

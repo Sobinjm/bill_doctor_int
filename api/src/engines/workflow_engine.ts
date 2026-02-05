@@ -20,8 +20,6 @@ export class WorkflowEngine {
         throw new Error(`Invalid transition from ${currentState} with action ${action}`);
     }
 
-
-
     static getUI(workflow: Workflow): UIResponse {
         const { state, context } = workflow;
 
@@ -59,7 +57,7 @@ export class WorkflowEngine {
                         type: 'Form',
                         props: {
                             fields: [
-                                { name: 'units', label: 'Monthly Units (kWh)', type: 'number', value: extracted.units }, // test the value
+                                { name: 'units', label: 'Monthly Units (kWh)', type: 'number', value: extracted.units }, 
                                 { name: 'rate', label: 'Rate ($/kWh)', type: 'number', value: extracted.rate }
                             ]
                         }
@@ -120,7 +118,6 @@ export class WorkflowEngine {
 
         const totalUnitsUsed = parsed.total_units_used;
         const chargePerUnit = parsed.charge_per_unit;
-
 
         return {
             units: parseFloat(totalUnitsUsed || '0'),
