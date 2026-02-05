@@ -43,9 +43,9 @@ static getUI(workflow: Workflow): UIResponse {
 
     switch (state) {
         case 'DRAFT':
-            response.view.screen = { title: 'Upload Bill', subtitle: 'Get started with solar savings' };
+            response.view.screen = { title: 'Upload Bill Details', subtitle: 'Get started with solar savings' };
             response.view.components = [
-                { type: 'Banner', props: { message: 'Upload your bill to see how much you can save.' } },
+                { type: 'Banner', props: { message: 'Copy/Paste your bill details to see how much you can save.' } },
                 { type: 'Form', props: { fields: [{ name: 'billText', label: 'Paste Bill Text', type: 'textarea' }] } },
             ];
             response.view.actions = [{ key: 'SUBMIT_BILL', label: 'Analyze Bill', variant: 'primary' }];

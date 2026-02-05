@@ -25,8 +25,6 @@ export const WorkflowOrchestrator = () => {
             .then((data: UIResponse) => {
                 setUi(data);
                 const currentState = data.workflow.state.toLowerCase();
-
-                // If it's a new workflow or URL state mismatch, sync URL
                 if (workflowId === 'new' || (urlState && urlState !== currentState)) {
                     navigate(`/workflow/${data.workflow.id}/${currentState}`, { replace: true });
                 }
@@ -37,7 +35,7 @@ export const WorkflowOrchestrator = () => {
                 setLoading(false);
                 console.error(_err);
             });
-    }, [id, urlState, navigate]); // Re-run if ID changes
+    }, [id, urlState, navigate]); // Re-render if ID changes
 
     const handleAction = async (actionKey: string) => {
         if (!ui) return;
