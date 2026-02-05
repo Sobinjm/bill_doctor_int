@@ -79,8 +79,6 @@ export const WorkflowOrchestrator = () => {
     if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
     if (!ui) return <div>No UI loaded</div>;
 
-    if (!ui) return <div>No UI loaded</div>;
-
     return (
         <div className="container">
             <header className="header">
