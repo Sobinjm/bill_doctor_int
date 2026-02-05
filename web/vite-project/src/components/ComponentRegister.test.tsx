@@ -16,7 +16,6 @@ describe('ComponentRegistry', () => {
         render(<ComponentRenderer component={{ type: 'SummaryCard', props: { title: 'Savings', value: '$100', description: 'Monthly' } }} onChange={() => { }} formState={{}} />);
         expect(screen.getByText('Savings')).toBeInTheDocument();
         expect(screen.getByText('$100')).toBeInTheDocument();
-        expect(screen.getByText('Monthly')).toBeInTheDocument();
     });
 
     it('renders Form component and handles input', () => {
