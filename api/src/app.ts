@@ -9,5 +9,9 @@ app.get('/test', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+app.get('/workflows', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 
 export default app;
