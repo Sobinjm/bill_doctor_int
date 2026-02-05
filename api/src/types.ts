@@ -18,6 +18,9 @@ export interface WorkflowContext {
     };
     savings?: number;
     reportUrl?: string;
+    total?: number;
+    units?: number;
+    rate?: number;
 }
 
 export interface Workflow {

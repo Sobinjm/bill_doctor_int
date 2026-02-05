@@ -53,7 +53,6 @@ export class WorkflowEngine {
                 break;
             case 'REVIEW':
                 const extracted = context.billData?.extractedFields || { units: 0, rate: 0 };
-                // console.log('testing bill data for review',context.billData)
                 response.view.screen = { title: 'Review Details', subtitle: 'We extracted this from your bill.' };
                 response.view.components = [
                     {
@@ -93,8 +92,17 @@ export class WorkflowEngine {
                     break;
     
                 case 'DONE':
+                    console.log('DONE', context);
                     response.view.screen = { title: 'All Done!', subtitle: 'Your report is ready.' };
                     response.view.components = [
+                       
+                        {
+                            type: 'SummaryCard',
+                            props: {
+                                value: `$${context.savings?.toFixed(2)}`,
+                                description: 'Total Units Used (kWh): ' + context.units?.toFixed(2) + '. Monthly Charge Rate ($/kWh): ' + context.rate?.toFixed(2)
+                            }
+                        },
                         { type: 'Banner', props: { message: 'We have emailed you the detailed report.', variant: 'success' } },
                     ];
                     response.allowedActions = [];

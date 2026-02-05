@@ -111,7 +111,7 @@ app.post('/v1/workflows/:id/actions', async (req, res) => {
                 rawText: text,
                 extractedFields: extractedContent 
             };
-            console.log('new context', newContext)
+          
         } else if (state === 'REVIEW' && action === 'SAVE_CORRECTIONS') {
            
             const { units, rate } = payload;
@@ -120,11 +120,14 @@ app.post('/v1/workflows/:id/actions', async (req, res) => {
             }
             newContext.billData.extractedFields = { units, rate }; // Apply corrections
             newContext.savings = WorkflowEngine.calculateSavings(units, rate);
+            newContext.units = payload.units | 0;
+            newContext.rate = payload.rate | 0;
         } else if (state === 'ESTIMATE' && action === 'CONFIRM_ESTIMATE') {
+            
             newContext.reportUrl = 'http://example.com/report.pdf';
-        } else if (action === 'BACK') {
-            // No context changes for back navigation
-        }
+            newContext.units = payload.units | 0;
+            newContext.rate = payload.rate | 0;
+        } 
 
         const newVersion = version + 1;
 
