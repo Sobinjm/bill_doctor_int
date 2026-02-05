@@ -17,6 +17,12 @@ A Server-Driven UI (SDUI) application where the backend drives the frontend flow
 ## SDUI API Contract
 
 The frontend fetches UI from `GET /v1/workflows/:id/ui` and posts actions to `POST /v1/workflows/:id/actions`.
+Based on the current state and action, the backend updates the workflow context and returns the new UI.
+The version of the contract will be changing based on the state but by default it will be version : 1.
+
+Used a switch statement to handle all the states and generate the UI contact based on the state and result of the action. 
+Can change the contract inside workflow_engine.ts file.
+
 
 ### Response Structure
 ```json
@@ -33,6 +39,9 @@ The frontend fetches UI from `GET /v1/workflows/:id/ui` and posts actions to `PO
   "allowedActions": ["SUBMIT"]
 }
 ```
+For improve the UX, we can add a "back" button to the UI and handle it in the backend.
+The back button will be handled by the backend and will return the UI with the previous state.
+For visual consistency and for easy access we have used react-router-dom to access each state directly using its idempotentId.
 
 ## Assumptions
 - Bill text is passed as a string(not the file upload) in the payload.
